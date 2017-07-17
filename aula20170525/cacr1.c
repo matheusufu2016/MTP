@@ -1,56 +1,27 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
-int primo(int x)
-{
-    int i,p;
-    p=1;
-    for(i=2; i < x ; i++)
-    {
-
-        if(x%i==0)
-          p=0;
+int primo(int numero) {
+    int i, p=1;
+    for(i=2; i<= numero/2; i++) {
+        if(numero % i == 0)
+            p = 0;
+            break;
     }
-    if(x==1) p=0;
+    if(numero <2) p = 0;
     return p;
-
 }
 
-int soma(int x)
-{
-    int acc=0,i;
-    for(i=2;i<x;i++)
-    {
-        if(primo(i)==1)
-         {
-            acc=acc+i;
 
-         }
-    }
+int main() {
+    int numero, i;
+    printf("Digite um numero para saber se e' primo:");
+    scanf("%d",&numero);
+    for(i=2; i<= numero/2; i++)
+        if(primo(i) && primo(numero-i))
+            printf("%d = %d + %d\n",numero, i, numero-i);
+            return 0 ;
 
-    printf("\n a soma e %d",acc);
-    if(acc==x)
-            {
-            printf(" \n a soma dos numeros anteriores ao numero e igual a ele mesmo");
-
-            }
-
-
-
-}
-
-int main ()
-{
-    int x, y;
-    printf("Digite um numero para saber se e primo:");
-    scanf("%d", &x);
-    y=primo(x);
-    if(y==1)
-    printf("e primo");
-    else
-    printf("nao e primo");
-    soma(x);
-
-    return 0;
 }
